@@ -1,4 +1,4 @@
-// File: C:\Users\chauh\Downloads\proxen---\proxen-nextjs-fixed\app\startups\page.tsx
+// File: C:\My Space\proxen\app\startups\page.tsx
 import * as entry from '../../../../app/startups/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

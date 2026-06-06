@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{\"layouts\\\\Wrapper.tsx -> aos\":{\"id\":\"layouts\\\\Wrapper.tsx -> aos\",\"files\":[\"static/chunks/_app-pages-browser_node_modules_aos_dist_aos_js.js\"]}}"
+self.__REACT_LOADABLE_MANIFEST='{"layouts\\\\Wrapper.tsx -> aos":{"id":908,"files":["static/chunks/908.953cb6129add5ffc.js"]}}';
