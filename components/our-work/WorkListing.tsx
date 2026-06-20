@@ -140,7 +140,7 @@ export default function WorkListing() {
                 src={item.src}
                 alt={item.alt}
                 fill
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'contain' }}
                 sizes={item.colSpan === 2 ? '(max-width: 768px) 100vw, 66vw' : '(max-width: 768px) 100vw, 33vw'}
                 loading="lazy"
               />

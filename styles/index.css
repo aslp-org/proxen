@@ -4224,12 +4224,20 @@
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
-  background: #fff;
+  /* background: #fff; */
+  height: 380px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .portfolio-item {
+    height: 280px;
+  }
 }
 
 .portfolio-item:hover {
   transform: scale(1.01);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); */
 }
 
 .portfolio-item img {

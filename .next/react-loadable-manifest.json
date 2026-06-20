@@ -23,10 +23,22 @@
       "static/chunks/_app-pages-browser_components_homes_home_TestimonialsSection_tsx.js"
     ]
   },
+  "components\\homes\\home\\index.tsx -> ./AboutSection": {
+    "id": "components\\homes\\home\\index.tsx -> ./AboutSection",
+    "files": [
+      "static/chunks/_app-pages-browser_components_homes_home_AboutSection_tsx.js"
+    ]
+  },
   "components\\homes\\home\\index.tsx -> ./PortfolioAreaHomeTwo": {
     "id": "components\\homes\\home\\index.tsx -> ./PortfolioAreaHomeTwo",
     "files": [
       "static/chunks/_app-pages-browser_components_homes_home_PortfolioAreaHomeTwo_tsx.js"
+    ]
+  },
+  "components\\homes\\home\\index.tsx -> ./TrustedPartnerSection": {
+    "id": "components\\homes\\home\\index.tsx -> ./TrustedPartnerSection",
+    "files": [
+      "static/chunks/_app-pages-browser_components_homes_home_TrustedPartnerSection_tsx.js"
     ]
   },
   "layouts\\Wrapper.tsx -> aos": {

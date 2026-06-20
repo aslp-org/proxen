@@ -4,8 +4,8 @@ import HomePage from '@/components/homes/home';
 import JsonLd from '@/components/SEO/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Home',
-  description: "Proxen Digital is a leading IT consulting and digital marketing company in Canada. We specialize in innovative web solutions, web development, and digital transformation.",
+  title: 'Web Design Company in Ontario | 10+ Years Experience | Proxen',
+  description: 'Trusted by businesses across Canada, Proxen combines 10+ years of experience and 50+ successful projects with strategic web design and digital solutions.',
   alternates: {
     canonical: siteConfig.url,
   },

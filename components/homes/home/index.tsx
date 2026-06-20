@@ -41,18 +41,30 @@ const FAQSection = dynamic(() => import("../home/FAQSection"), {
   loading: () => <div style={{ minHeight: 200 }} />,
 });
 
+const TrustedPartnerSection = dynamic(() => import("./TrustedPartnerSection"), {
+  ssr: false,
+  loading: () => <div style={{ minHeight: 200 }} />,
+});
+
+const AboutSection = dynamic(() => import("./AboutSection"), {
+  ssr: false,
+  loading: () => <div style={{ minHeight: 200 }} />,
+});
+
 
 export default function HomeTwo() {
   // Sections ordered strictly according to PDF design structure
   const sections = [
     <PageSEO
       key="seo-home"
-      title="Home"
-      description="Proxen Digital - Leading IT consulting and digital marketing company in Canada. Innovative web solutions and digital transformation services."
+      title="Web Design Company in Ontario | 10+ Years Experience | Proxen"
+      description="Trusted by businesses across Canada, Proxen combines 10+ years of experience and 50+ successful projects with strategic web design and digital solutions."
       canonical="https://proxen.ca/"
     />,
     <HeroSection key="hero" />,
+    <TrustedPartnerSection key="trusted-partner" />,
     <ServicesSection key="services" />,
+    <AboutSection key="about-us" />,
     <OurClients key="clients" />,
     <PortfolioAreaHomeTwo key="portfolio" />,
     <ProcessSection key="process" />,

@@ -53,7 +53,7 @@ const featureData: Omit<FeatureCardProps, "children">[] = [
 
 // Content Data
 const H1_SERVICES = ["Digital Brands", "Websites", "Mobile Apps", "SaaS Systems"];
-const EYEBROW_SERVICES = ["Web Development", "Brand Design", "React & TypeScript", "Shopify Solutions"];
+const EYEBROW_SERVICES = ["Web Design Company", "Web Design Agency", "Web Design Toronto", "Web Development Agency"];
 
 // --- Sub-component ---
 const FeatureCard: React.FC<FeatureCardProps> = ({
@@ -168,6 +168,9 @@ const HeroSection: React.FC = () => {
 
           {/* Headline — uppercase, heavy with Typing Effect */}
           <h1 className="hp-hero-h1" data-aos="fade-up" data-aos-delay="80">
+            <span style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
+              AI-Powered Web Design Agency
+            </span>
             We Build
             <br />
             Strategic <br />
@@ -181,8 +184,7 @@ const HeroSection: React.FC = () => {
 
           {/* Description */}
           <p className="hp-hero-desc" data-aos="fade-up" data-aos-delay="160">
-            From strategy to launch — we craft websites, apps, and marketing
-            systems that turn visitors into loyal customers.
+            As a premier web design agency in Ontario, we employ AI-driven strategies, user-focused design, and advanced development to create websites that deliver measurable business results.
           </p>
 
           {/* CTAs */}

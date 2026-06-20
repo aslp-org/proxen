@@ -78,9 +78,9 @@ const ServicesSection: React.FC = () => {
         {/* ── Section Header ── */}
         <div className="hp-section-header" data-aos="fade-up">
           <p className="hp-eyebrow">What We Do For You</p>
-          <h2 className="hp-section-h2">Services Built for Business Results</h2>
+          <h2 className="hp-section-h2">Strategic Web Design & Digital Solutions for Modern Businesses</h2>
           <p className="hp-section-desc">
-            Every service we offer is designed to move the needle — not just look good.
+            We help businesses build a stronger digital presence through thoughtful strategy, reliable execution, and measurable results.
           </p>
         </div>
 
