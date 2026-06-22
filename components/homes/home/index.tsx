@@ -1,5 +1,3 @@
-'use client';
-
 // ── Layouts & wrappers ────────────────────────────────────────
 import Wrapper from "../../../layouts/Wrapper";
 import HomeLayout from "../HomeLayout";

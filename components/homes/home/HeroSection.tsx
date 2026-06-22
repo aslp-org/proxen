@@ -1,13 +1,12 @@
-'use client';
-
 // HeroSection.tsx
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   HiOutlineChartBar,
   HiRocketLaunch,
   HiShieldCheck,
   HiOutlineCodeBracket,
 } from "react-icons/hi2";
+import { HeroH1Typed, HeroEyebrowTyped } from "./HeroTyping";
 
 // --- Types ---
 interface FeatureCardProps {
@@ -51,10 +50,6 @@ const featureData: Omit<FeatureCardProps, "children">[] = [
   },
 ];
 
-// Content Data
-const H1_SERVICES = ["Digital Brands", "Websites", "Mobile Apps", "SaaS Systems"];
-const EYEBROW_SERVICES = ["Web Design Company", "Web Design Agency", "Web Design Toronto", "Web Development Agency"];
-
 // --- Sub-component ---
 const FeatureCard: React.FC<FeatureCardProps> = ({
   id,
@@ -66,7 +61,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => (
   <div className={`hp-feat-card hp-feat-card--${variant} hp-feat-card--${id}`}>
     <div className="hp-feat-icon-wrapper">{icon}</div>
-    <h3 className="hp-feat-title">{title}</h3>
+    <span className="hp-feat-title">{title}</span>
     <p className="hp-feat-sub">{subtitle}</p>
     {children && <div className="hp-feat-decor">{children}</div>}
   </div>
@@ -74,76 +69,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 
 // --- Main Component ---
 const HeroSection: React.FC = () => {
-  // --- Main H1 Typing Animation Logic ---
-  const [h1WordIndex, setH1WordIndex] = useState(0);
-  const [h1Text, setH1Text] = useState("");
-  const [isH1Deleting, setIsH1Deleting] = useState(false);
-  const [h1TypingSpeed, setH1TypingSpeed] = useState(100);
-
-  useEffect(() => {
-    const activeWord = H1_SERVICES[h1WordIndex];
-
-    const handleH1Typing = () => {
-      if (!isH1Deleting) {
-        setH1Text(activeWord.substring(0, h1Text.length + 1));
-        if (h1Text === activeWord) {
-          setH1TypingSpeed(2200); 
-          setIsH1Deleting(true);
-        } else {
-          setH1TypingSpeed(80);
-        }
-      } else {
-        setH1Text(activeWord.substring(0, h1Text.length - 1));
-        if (h1Text === "") {
-          setIsH1Deleting(false);
-          setH1WordIndex((prev) => (prev + 1) % H1_SERVICES.length);
-          setH1TypingSpeed(400); 
-        } else {
-          setH1TypingSpeed(40);
-        }
-      }
-    };
-
-    const timer = setTimeout(handleH1Typing, h1TypingSpeed);
-    return () => clearTimeout(timer);
-  }, [h1Text, isH1Deleting, h1WordIndex, h1TypingSpeed]);
-
-
-  // --- Eyebrow Badge Typing Animation Logic ---
-  const [eyebrowWordIndex, setEyebrowWordIndex] = useState(0);
-  const [eyebrowText, setEyebrowText] = useState("");
-  const [isEyebrowDeleting, setIsEyebrowDeleting] = useState(false);
-  const [eyebrowTypingSpeed, setEyebrowTypingSpeed] = useState(100);
-
-  useEffect(() => {
-    const activeWord = EYEBROW_SERVICES[eyebrowWordIndex];
-
-    const handleEyebrowTyping = () => {
-      if (!isEyebrowDeleting) {
-        setEyebrowText(activeWord.substring(0, eyebrowText.length + 1));
-        if (eyebrowText === activeWord) {
-          setEyebrowTypingSpeed(2500); // Stay slightly longer on the small badge
-          setIsEyebrowDeleting(true);
-        } else {
-          setEyebrowTypingSpeed(60); // Fast typing for small text
-        }
-      } else {
-        setEyebrowText(activeWord.substring(0, eyebrowText.length - 1));
-        if (eyebrowText === "") {
-          setIsEyebrowDeleting(false);
-          setEyebrowWordIndex((prev) => (prev + 1) % EYEBROW_SERVICES.length);
-          setEyebrowTypingSpeed(300);
-        } else {
-          setEyebrowTypingSpeed(30); // Fast deletion
-        }
-      }
-    };
-
-    const timer = setTimeout(handleEyebrowTyping, eyebrowTypingSpeed);
-    return () => clearTimeout(timer);
-  }, [eyebrowText, isEyebrowDeleting, eyebrowWordIndex, eyebrowTypingSpeed]);
-
-
   return (
     <section id="hp-hero" className="hp-hero-section">
       {/* ── Background Layers ── */}
@@ -160,10 +85,7 @@ const HeroSection: React.FC = () => {
           {/* Eyebrow badge — Floating pill with Typing Effect */}
           <div className="hp-eyebrow-badge" data-aos="fade-up" data-aos-delay="0">
             <span className="hp-eyebrow-dot" aria-hidden="true" />
-            <span className="hp-eyebrow-text-wrapper">
-              {eyebrowText}
-              <span className="hp-type-cursor" aria-hidden="true">|</span>
-            </span>
+            <HeroEyebrowTyped />
           </div>
 
           {/* Headline — uppercase, heavy with Typing Effect */}
@@ -174,10 +96,7 @@ const HeroSection: React.FC = () => {
             We Build
             <br />
             Strategic <br />
-            <span className="hp-accent hp-typed-box">
-              {h1Text}
-              <span className="hp-type-cursor" aria-hidden="true">|</span>
-            </span>
+            <HeroH1Typed />
             <br />
             That Actually Grow
           </h1>

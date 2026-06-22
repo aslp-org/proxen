@@ -1,5 +1,6 @@
 @font-face {
   font-family: 'SatoshiRegular';
+  font-display: swap;
   src: url('../fonts/SatoshiRegular.eot');
   src: url('../fonts/SatoshiRegular.eot') format('embedded-opentype'),
        url('../fonts/SatoshiRegular.woff2') format('woff2'),
@@ -10,6 +11,7 @@
 
 @font-face {
   font-family: 'SatoshiMedium';
+  font-display: swap;
   src: url('../fonts/SatoshiMedium.eot');
   src: url('../fonts/SatoshiMedium.eot') format('embedded-opentype'),
        url('../fonts/SatoshiMedium.woff2') format('woff2'),
@@ -21,6 +23,7 @@
 
 @font-face {
   font-family: 'SatoshiBold';
+  font-display: swap;
   src: url('../fonts/SatoshiBold.eot');
   src: url('../fonts/SatoshiBold.eot') format('embedded-opentype'),
        url('../fonts/SatoshiBold.woff2') format('woff2'),

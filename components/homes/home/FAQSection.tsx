@@ -91,6 +91,7 @@ export default function FAQSection() {
                   aria-controls={`hp-faq-body-${idx}`}
                   id={`hp-faq-btn-${idx}`}
                   type="button"
+                  aria-label={isOpen ? `Collapse: ${faq.q}` : `Expand: ${faq.q}`}
                 >
                   <span className="hp-faq-item__question">{faq.q}</span>
                   <span className="hp-faq-item__icon-wrap" aria-hidden="true">
