@@ -108,7 +108,7 @@ const TestimonialsSection: React.FC = () => {
     trackRef.current.scrollTo({ left: clamped * cardWidth, behavior: "smooth" });
   }, [maxIndex]);
 
-  const resetAutoPlay = () => {
+  const resetAutoPlay = useCallback(() => {
     if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     autoPlayRef.current = setInterval(() => {
       setCurrentIndex((prev) => {
@@ -123,14 +123,14 @@ const TestimonialsSection: React.FC = () => {
         return next;
       });
     }, 4500);
-  };
+  }, [maxIndex]);
 
   useEffect(() => {
     resetAutoPlay();
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
-  }, [maxIndex]);
+  }, [maxIndex, resetAutoPlay]);
 
   // Drag-to-scroll
   const onMouseDown = (e: React.MouseEvent) => {
@@ -181,7 +181,7 @@ const TestimonialsSection: React.FC = () => {
           <p className="hp-eyebrow">Client Stories</p>
           <h2 className="hp-section-h2">What Our Clients Say</h2>
           <p className="hp-section-desc">
-            Real words from real partners we've helped grow.
+            Real words from real partners we&apos;ve helped grow.
           </p>
         </div>
 
@@ -209,7 +209,7 @@ const TestimonialsSection: React.FC = () => {
                 </div>
 
                 {/* Quote */}
-                <blockquote className="hp-testi-quote">"{t.quote}"</blockquote>
+                <blockquote className="hp-testi-quote">&ldquo;{t.quote}&rdquo;</blockquote>
 
                 {/* Author */}
                 <div className="hp-testi-author">

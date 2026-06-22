@@ -14,7 +14,7 @@ export default function CaseStudyForStartUps() {
                 <div className="proxensub-title aos-init" data-aos-delay="400" data-aos="fade-up"><p>Case Studies & Success Stories</p></div>
                 <h2 className="aos-init" data-aos-delay="500" data-aos="fade-up">Our Case Studies</h2>
                 <p className="aos-init" data-aos-delay="550" data-aos="fade-up" style={{ marginTop: '12px' }}>
-                  Explore how we've helped startups and businesses transform ideas into scalable digital platforms, SaaS products, and operational systems.
+                  Explore how we&apos;ve helped startups and businesses transform ideas into scalable digital platforms, SaaS products, and operational systems.
                 </p>
               </div>
               <div className="col-xl-5 col-lg-4 d-flex align-items-end justify-content-end">

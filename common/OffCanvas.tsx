@@ -37,7 +37,16 @@ export default function OffCanvas({ menuOpen, setMenuOpen }: OffCanvasProps) {
   };
 
   return (
-    <div className={`proxenmenu-wrapper ${menuOpen ? 'proxenbody-visible' : ''}`} onClick={handleWrapperClick}>
+    <div
+      className={`proxenmenu-wrapper ${menuOpen ? 'proxenbody-visible' : ''}`}
+      onClick={handleWrapperClick}
+      style={{
+        /* Critical: keep the overlay off-screen when closed so it never
+           renders as visible inline content before app.min.css loads */
+        visibility: menuOpen ? 'visible' : 'hidden',
+        pointerEvents: menuOpen ? 'auto' : 'none',
+      }}
+    >
       <div className="proxenmenu-area text-center">
         <div className="proxenmenu-mobile-top">
           <div className="mobile-logo">

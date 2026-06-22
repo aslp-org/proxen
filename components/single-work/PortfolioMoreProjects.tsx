@@ -17,21 +17,11 @@ interface PortfolioMoreProjectsProps {
 }
 
 export default function PortfolioMoreProjects({ project }: PortfolioMoreProjectsProps) {
-  // Get all projects except the current one
+  // Get all projects except the current one (defined here so useMemo can reference it)
   const otherProjects = portfolioProjects.filter(p => p.slug !== project.slug);
 
-  // If there are no other projects, don't render the section
-  if (otherProjects.length === 0) {
-    return null;
-  }
-
-  // Use heading, viewAllText, viewAllLink from the project's moreProjects if available, otherwise defaults
-  const heading = project.moreProjects?.heading || 'More Projects';
-  const viewAllText = project.moreProjects?.viewAllText || 'View All Projects';
-  const viewAllLink = project.moreProjects?.viewAllLink || '/work';
-  const buttonColor = project.color || '#212529';
-
   // Prepare slides with best available images
+  // IMPORTANT: useMemo must be called before any early return (React hooks rules)
   const enhancedProjects = useMemo(() => {
     return otherProjects.map((proj) => {
       // Priority: relatedPortfolioImage → listingImage → hero.mainImage → placeholder
@@ -48,6 +38,17 @@ export default function PortfolioMoreProjects({ project }: PortfolioMoreProjects
       };
     });
   }, [otherProjects]);
+
+  // If there are no other projects, don't render the section
+  if (otherProjects.length === 0) {
+    return null;
+  }
+
+  // Use heading, viewAllText, viewAllLink from the project's moreProjects if available, otherwise defaults
+  const heading = project.moreProjects?.heading || 'More Projects';
+  const viewAllText = project.moreProjects?.viewAllText || 'View All Projects';
+  const viewAllLink = project.moreProjects?.viewAllLink || '/work';
+  const buttonColor = project.color || '#212529';
 
   const count = enhancedProjects.length;
 
@@ -100,13 +101,18 @@ export default function PortfolioMoreProjects({ project }: PortfolioMoreProjects
               <div key={index} className="pmp-slide">
                 <div className="proxenp-thumb">
                   <Link href={proj.link} title={proj.title}>
-                    <img
-                      src={proj.image}
-                      alt={proj.title || `Project ${index + 1}`}
-                      className="pmp-image"
-                      loading="lazy"
-                      onError={(e) => { e.currentTarget.src = PLACEHOLDER_IMAGE; }}
-                    />
+                    {/* next/image wrapper keeps CLS zero; width/height drive aspect ratio */}
+                    <div style={{ position: 'relative', width: '100%', height: '280px' }}>
+                      <Image
+                        src={proj.image}
+                        alt={proj.title || `Project ${index + 1}`}
+                        fill
+                        style={{ objectFit: 'cover', borderRadius: '12px' }}
+                        sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 25vw"
+                        loading="lazy"
+                        className="pmp-image"
+                      />
+                    </div>
                   </Link>
                 </div>
                 {proj.title && (

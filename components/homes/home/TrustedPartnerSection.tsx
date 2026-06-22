@@ -201,13 +201,13 @@ const TrustedPartnerSection: React.FC = () => {
               Local Expertise
             </span>
             <h2 className="hp-partner-h2">
-              Ontario's Trusted Partner for <span className="text-highlight">Web Design</span> & <span className="text-highlight">Digital Growth</span>
+              Ontario&apos;s Trusted Partner for <span className="text-highlight">Web Design</span> &amp; <span className="text-highlight">Digital Growth</span>
             </h2>
             <p className="hp-partner-desc">
               At Proxen, we help businesses across Ontario and Canada build a stronger digital presence through innovative web design, strategic development, and results-driven digital solutions. As a trusted web design company, our experienced team works with businesses in Toronto, Mississauga, Brampton, Hamilton, and Cambridge, creating high-performing websites designed to engage users, generate qualified leads, and support long-term business growth.
             </p>
             <p className="hp-partner-desc">
-              Recognized as a top web design agency, Proxen combines creativity, technology, and digital expertise to deliver exceptional online experiences. Whether you're a startup, growing business, or established brand, we create custom websites tailored to your goals. From Toronto and Mississauga to Brampton, Hamilton, and Cambridge, we help businesses attract more customers, strengthen their brand presence, and achieve measurable results online.
+              Recognized as a top web design agency, Proxen combines creativity, technology, and digital expertise to deliver exceptional online experiences. Whether you&apos;re a startup, growing business, or established brand, we create custom websites tailored to your goals. From Toronto and Mississauga to Brampton, Hamilton, and Cambridge, we help businesses attract more customers, strengthen their brand presence, and achieve measurable results online.
             </p>
             
             {/* <div className="hp-partner-locations">

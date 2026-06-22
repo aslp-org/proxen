@@ -173,8 +173,8 @@ export default function ContactusArea() {
         {/* ── Top Blue Header ── */}
         <section className="contact-header-section">
           <div className="header-content">
-            <h1>Let's talk</h1>
-            <p>Connect With Us, We're Here to Help</p>
+            <h1>Let&apos;s talk</h1>
+            <p>Connect With Us, We&apos;re Here to Help</p>
           </div>
         </section>
 
@@ -235,7 +235,7 @@ export default function ContactusArea() {
                     </svg>
                   </div>
                   <h3>Message Sent! 🎉</h3>
-                  <p>Thanks for reaching out. We'll get back to you within 1–2 business days.</p>
+                  <p>Thanks for reaching out. We&apos;ll get back to you within 1–2 business days.</p>
                   <button className="submit-btn reset-btn" onClick={handleReset}>
                     Send Another Message
                   </button>

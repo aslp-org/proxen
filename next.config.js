@@ -16,6 +16,31 @@ const nextConfig = {
       { source: '/cities', destination: '/cities-we-serve', permanent: true },
     ];
   },
+  async headers() {
+    return [
+      {
+        // Long-term immutable cache for all static assets in /public/assets/
+        source: '/assets/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // 1-year cache for the favicon
+        source: '/favicon.ico',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
+

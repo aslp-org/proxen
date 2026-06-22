@@ -78,7 +78,7 @@ const WhoWeWorkWith: React.FC = () => {
             <div className="sp-wwww-right-card">
               <h3 className="sp-wwww-card-title">From MVP to Full-Scale Platform</h3>
               <p className="sp-wwww-card-desc">
-                Whether you're starting from scratch or modernizing an existing product,
+                Whether you&apos;re starting from scratch or modernizing an existing product,
                 our team combines strategy, design, and engineering to deliver modern
                 digital solutions with speed and clarity — bringing your ideas to market faster.
               </p>

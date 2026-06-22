@@ -10,7 +10,6 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-const PLACEHOLDER_IMAGE = 'https://placehold.co/800x600/2b4f5c/white?text=Project+Image';
 
 interface PortfolioAssetsProps {
   project: PortfolioProject;
@@ -75,14 +74,18 @@ export default function PortfolioAssets({ project }: PortfolioAssetsProps) {
           >
             {images.map((img, index) => (
               <SwiperSlide key={index}>
-                <img
-                  src={img}
-                  alt={`${project.hero.headline} screenshot ${index + 1}`}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  onError={(e) => {
-                    e.currentTarget.src = PLACEHOLDER_IMAGE;
-                  }}
-                />
+                {/* Positioned wrapper gives next/image a defined size for fill mode */}
+                <div style={{ position: 'relative', width: '100%', height: '400px' }}>
+                  <Image
+                    src={img}
+                    alt={`${project.hero.headline} screenshot ${index + 1}`}
+                    fill
+                    style={{ objectFit: 'cover', borderRadius: '12px' }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
+                    priority={index === 0}
+                    onError={undefined}
+                  />
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>

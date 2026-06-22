@@ -1,7 +1,17 @@
 import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import Script from 'next/script';
 import { siteConfig } from '@/siteConfig';
 import '@/styles/index.css';
+
+// ── Google Font via next/font (zero render-blocking, auto font-display:swap) ──
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: ['200', '300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-plus-jakarta',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -24,15 +34,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={plusJakartaSans.variable}>
       <head>
-        {/* Google Fonts preconnect — reduces DNS/handshake latency */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
-          rel="stylesheet"
-        />
+        {/* ── Public-dir CSS loaded as <link> tags so browser fetches from  ──
+            ── public/ correctly. PostCSS cannot resolve /assets/... paths.  ── */}
+        <link rel="stylesheet" href="/assets/css/slick.css" />
+        <link rel="stylesheet" href="/assets/css/aos.css" />
+        <link rel="stylesheet" href="/assets/css/remixicon.css" />
+        <link rel="stylesheet" href="/assets/css/satoshi-font.css" />
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/assets/css/main.css" />
+        <link rel="stylesheet" href="/assets/css/app.min.css" />
+        {/* Typekit (termina font) — non-critical, loaded after above ── */}
+        <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="/assets/css/skn8ash.css" />
+
         {/* Hero background image preload — tells browser to fetch LCP resource early */}
         <link
           rel="preload"
@@ -53,3 +69,4 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+

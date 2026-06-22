@@ -171,7 +171,7 @@ const AboutSection: React.FC = () => {
             
             <div data-aos="fade-left">
               <p className="hp-about-intro">
-                At Proxen, we believe great digital experiences have the power to transform businesses. For over 10 years, we've helped companies across Toronto, Mississauga, Brampton, Hamilton, Cambridge, and throughout Ontario strengthen their online presence through innovative web design, strategic development, and results-driven digital solutions.
+                For over 10 years, we&apos;ve helped companies across Toronto, Mississauga, Brampton, Hamilton, Cambridge, and throughout Ontario strengthen their online presence through innovative web design, strategic development, and results-driven digital solutions.
               </p>
             </div>
           </div>
@@ -183,7 +183,7 @@ const AboutSection: React.FC = () => {
               <span className="hp-about-card-stat">10+</span>
               <h3 className="hp-about-card-title">Years of Passion</h3>
               <p className="hp-about-card-desc">
-                What started as a passion for creating exceptional websites has evolved into a trusted partnership with businesses across Canada. Our approach is simple: understand our clients' goals, deliver outstanding work, and create solutions that drive measurable growth.
+                What started as a passion for creating exceptional websites has evolved into a trusted partnership with businesses across Canada. Our approach is simple: understand our clients&apos; goals, deliver outstanding work, and create solutions that drive measurable growth.
               </p>
             </div>
             

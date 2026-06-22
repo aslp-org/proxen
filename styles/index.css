@@ -1,12 +1,9 @@
+/* Third-party CSS from node_modules — resolved by webpack correctly */
 @import "swiper/css/bundle";
-@import "/assets/css/slick.css";
-@import "/assets/css/aos.css";
-@import "/assets/css/skn8ash.css";
-@import "/assets/css/remixicon.css";
-@import "/assets/css/satoshi-font.css";
-@import "/assets/css/bootstrap.min.css";
-@import "/assets/css/main.css";
-@import "/assets/css/app.min.css";
+
+/* NOTE: Public-dir CSS (slick, aos, bootstrap, main, app.min) are
+   loaded via <link> tags in app/layout.tsx to avoid PostCSS resolving
+   /assets/... paths against the filesystem root instead of public/ */
 
 /* ===== Centralized component styles ===== */
 
@@ -20,6 +17,9 @@
 
 
 :root {
+  /* Font variable injected by next/font/google in layout.tsx */
+  --font-plus-jakarta: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
   --hp-blue:           #086CFE;
   --hp-blue-light:     #60a5fa;
   --hp-blue-hover:     #086CFE;

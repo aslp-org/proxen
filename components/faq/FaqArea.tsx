@@ -92,6 +92,9 @@ export default function FaqArea() {
                 className="proxenfaq-header"
                 onClick={() => toggleFaq(faq.id)}
                 type="button"
+                aria-expanded={activeId === faq.id}
+                aria-controls={`faq-panel-${faq.id}`}
+                id={`faq-trigger-${faq.id}`}
                 style={{ background: "transparent", border: 0, width: "100%", padding: 0, textAlign: "left", cursor: "pointer" }}
               >
                 <h3>{formatQuestionWithNumber(faq.question, index)}</h3>
@@ -102,6 +105,9 @@ export default function FaqArea() {
 
               <div
                 className="proxenfaq-body"
+                id={`faq-panel-${faq.id}`}
+                role="region"
+                aria-labelledby={`faq-trigger-${faq.id}`}
                 style={{
                   display: activeId === faq.id ? 'block' : 'none',
                 }}

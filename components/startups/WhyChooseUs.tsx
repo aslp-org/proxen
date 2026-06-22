@@ -155,7 +155,7 @@ const WhyChooseUs: React.FC = () => {
                       </div>
 
                       <blockquote className="sp-testimonial-quote">
-                        "{t.quote}"
+                        &ldquo;{t.quote}&rdquo;
                       </blockquote>
 
                       <div className="sp-testimonial-author">
