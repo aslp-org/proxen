@@ -20,6 +20,7 @@ import ServicePortfolio     from "./ServicePortfolio";
 import WhyChooseProxen      from "./WhyChooseProxen";
 import OurClients           from "./OurClients";
 import ServiceTestimonials  from "./ServiceTestimonials";
+import ServiceFAQ           from "./ServiceFAQ";
 
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -38,6 +39,7 @@ export default function ServiceDetails({ params }: { params?: { slug?: string } 
     industriesSection,
     whyChoose,
     technologies,
+    faq,
   } = service;
 
   return (
@@ -62,6 +64,9 @@ export default function ServiceDetails({ params }: { params?: { slug?: string } 
 
         {/* ── Technologies ── unique platform logos & heading per service */}
         <ServicesTechnologies {...technologies} />
+
+        {/* ── FAQ ── rendered only when the service defines FAQ items */}
+        {faq && faq.length > 0 && <ServiceFAQ items={faq} />}
 
         {/* ── Portfolio, Clients, Testimonials ── shared across services ── */}
         <ServicePortfolio />

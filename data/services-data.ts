@@ -161,7 +161,14 @@ export type PlatformId =
   | "squarespace"
   | "weebly"
   | "react"
-  | "vue";
+  | "vue"
+  // ── Digital marketing channels ───────────────────────────────────────────
+  | "google"
+  | "google-ads"
+  | "facebook"
+  | "instagram"
+  | "linkedin"
+  | "ai-search";
 
 export interface PlatformData {
   id:    PlatformId;
@@ -218,16 +225,28 @@ export interface ServiceCarouselShape {
   startProjectLink?:  string;
 }
 
+export interface FAQItem {
+  q: string;
+  a: string;
+}
+
 export interface ServiceData {
   id:                  number;
   slug:                string;
   title:               string;
+  /** Optional SEO overrides for generateMetadata */
+  seoMeta?: {
+    title:       string;
+    description: string;
+  };
   listing:             ServiceListingShape;
   carousel:            ServiceCarouselShape;
   hero:                HeroSectionData;
   industriesSection:   IndustriesSectionData;
   whyChoose:           WhyChooseSectionData;
   technologies:        TechnologiesSectionData;
+  /** Optional per-service FAQ items rendered below technologies */
+  faq?: FAQItem[];
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -574,6 +593,10 @@ export const services: ServiceData[] = [
     id: 4,
     slug: "professional-seo-services",
     title: "SEO Services",
+    seoMeta: {
+      title:       "Best SEO Agency in Ontario | Proxen",
+      description: "Trusted SEO agency in Ontario providing local SEO, technical SEO, content optimization, and link building services to help businesses grow online and attract more customers.",
+    },
     listing: {
       layoutSide: "right",
       image: "https://images.prismic.io/proxen/aeigmsBOoF08xM_d_SEO.png?auto=format,compress",
@@ -594,15 +617,14 @@ export const services: ServiceData[] = [
     },
     hero: {
       ...heroSection,
-      eyebrow: "Search Engine Optimization",
+      eyebrow: "Ontario's Trusted SEO Agency",
       headlineParts: [
-        { text: "Dominate\nSearch " },
-        { text: "Rankings\n",  accent: true },
-        { text: "Capture ",    accent: true },
-        { text: "More\nRevenue" },
+        { text: "Best SEO\nAgency " },
+        { text: "in\n",   accent: true },
+        { text: "Ontario", accent: true },
       ],
       description:
-        "Stop paying for every click. We build sustainable, data-driven organic search strategies that place your business in front of high-intent buyers — for free.",
+        "Increase your online visibility, attract qualified leads, and grow your business with data-driven SEO strategies tailored to your goals. Proxen helps businesses achieve higher search rankings, more organic traffic, and measurable results through proven SEO solutions.",
       primaryCta:   { label: "Get a Free SEO Audit",  href: "/contact-us" },
       secondaryCta: { label: "See Ranking Results",   href: "/work" },
       trustAvatars: SHARED_AVATARS,
@@ -631,35 +653,38 @@ export const services: ServiceData[] = [
       ],
     },
     industriesSection: {
-      eyebrow:     "Markets We Rank In",
-      heading:     "SEO That Wins in Every Competitive Market",
-      description: "We don't use cookie-cutter playbooks. Every campaign is custom-built around the competitive dynamics of your specific industry.",
+      eyebrow:     "ONTARIO'S TRUSTED SEO AGENCY",
+      heading:     "Affordable SEO Services for Small Businesses Across Ontario",
+      description: "Whether you're a local plumber, electrician, contractor, law firm, healthcare provider, restaurant, or retail business, our SEO services are designed to help you rank higher on Google, attract qualified leads, and grow your business. We create customized, results-driven SEO strategies that deliver long-term growth without the high agency costs.",
       industries: [
+        { label: "Plumbers",              bg: "#dbeafe", color: "#111827" },
+        { label: "Electricians",          bg: "#fef3c7", color: "#111827" },
+        { label: "Contractors & Trades",  bg: "#dcfce7", color: "#111827" },
+        { label: "HVAC Companies",        bg: "#ffe4e6", color: "#111827" },
+        { label: "Roofing Companies",     bg: "#ffedd5", color: "#111827" },
+        { label: "Landscapers",           bg: "#ede9fe", color: "#111827" },
         { label: "Law Firms",             bg: "#fef3c7", color: "#111827" },
-        { label: "Medical & Dental",      bg: "#dbeafe", color: "#111827" },
-        { label: "Real Estate",           bg: "#e5e7eb", color: "#111827" },
-        { label: "Home Services",         bg: "#dcfce7", color: "#111827" },
-        { label: "Accounting & Finance",  bg: "#ffe4e6", color: "#111827" },
-        { label: "E-Commerce Stores",     bg: "#ffedd5", color: "#111827" },
-        { label: "SaaS & Technology",     bg: "#ede9fe", color: "#111827" },
-        { label: "Local Restaurants",     bg: "#fce7f3", color: "#111827" },
-        { label: "Insurance Brokers",     bg: "#fef3c7", color: "#111827" },
-        { label: "Contractors & Trades",  bg: "#dbeafe", color: "#111827" },
+        { label: "Healthcare & Dental",   bg: "#dbeafe", color: "#111827" },
+        { label: "Restaurants",           bg: "#fce7f3", color: "#111827" },
+        { label: "Retail Stores",         bg: "#e5e7eb", color: "#111827" },
+        { label: "Cleaning Services",     bg: "#dcfce7", color: "#111827" },
+        { label: "Small Businesses",      bg: "#ffedd5", color: "#111827" },
       ],
     },
     whyChoose: {
-      eyebrow:       "We Help Your Website Get Found",
-      headingPlain:  "Smarter",
-      headingAccent: "SEO Strategies",
-      headingTrail:  "For Long-Term Growth",
+      eyebrow:       "YOUR PARTNER IN DIGITAL GROWTH",
+      headingPlain:  "Helping Businesses Get Found Across",
+      headingAccent: "Search & AI",
+      headingTrail:  "Platforms",
       description:
-        "At Proxen, our SEO services are focused on visibility, authority, and conversions. We combine technical optimization, keyword strategy, and content growth to help your website rank better and perform stronger.",
+        "At Proxen, we help businesses across Ontario and Canada increase their online visibility, attract qualified leads, and achieve sustainable growth. Our approach combines SEO, AEO, and GEO to ensure your business remains visible across traditional search engines and emerging AI-powered platforms.",
       features: [
-        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeFbK9tuLqEGKp_On-PageSEO.svg",          title: "On-Page SEO",          desc: "We optimize every important element of your website including headings, meta tags, URLs, content structure, and internal linking." },
-        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeF7K9tuLqEGKr_TechnicalSEO.svg",        title: "Technical SEO",        desc: "A strong technical foundation is essential for SEO success. We improve website speed, mobile responsiveness, indexing, crawlability, and site architecture." },
-        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeFLK9tuLqEGKo_LocalSEO.svg",            title: "Local SEO",            desc: "Increase your visibility in local search results and Google Maps. We optimize your business listings, location pages, and local keywords." },
-        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeE7K9tuLqEGKn_ContentOptimization.svg", title: "Content Optimization", desc: "Content plays a major role in organic growth. We create and optimize SEO-friendly content that not only ranks higher on search engines but also drives conversions." },
-        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeFrK9tuLqEGKq_SEOReporting.svg",        title: "SEO Reporting",        desc: "Stay updated with transparent performance reports and insights. We monitor keyword rankings, organic traffic, and user behavior to keep your growth on track." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeFbK9tuLqEGKp_On-PageSEO.svg",          title: "Search Engine Optimization (SEO)",   desc: "Improve your visibility in search results with strategic keyword research, on-page optimization, content enhancements, and technical improvements designed to attract qualified traffic." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeF7K9tuLqEGKr_TechnicalSEO.svg",        title: "Answer Engine Optimization (AEO)",   desc: "Position your business to appear in featured snippets, voice searches, and AI-generated answers by creating content that directly addresses customer questions." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeFLK9tuLqEGKo_LocalSEO.svg",            title: "Generative Engine Optimization (GEO)", desc: "Increase your brand's visibility across AI platforms such as ChatGPT, Gemini, Copilot, and other emerging search technologies through structured, authoritative content strategies." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeE7K9tuLqEGKn_ContentOptimization.svg", title: "Technical SEO",                       desc: "Build a strong digital foundation through website audits, performance optimization, schema markup, indexing improvements, and Core Web Vitals enhancements." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeFrK9tuLqEGKq_SEOReporting.svg",        title: "Local SEO",                           desc: "Connect with customers in your service area through Google Business Profile optimization, local citations, location-focused content, and local search strategies." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahFflLK9tuLqEGGd_Conversion-FirstDesign.svg", title: "Content Strategy & Authority Building", desc: "Establish trust and industry expertise with high-quality content that educates your audience, supports search visibility, and drives meaningful engagement." },
       ],
     },
     technologies: {
@@ -678,6 +703,44 @@ export const services: ServiceData[] = [
         { id: "wix",       label: "Wix"         },
       ],
     },
+    faq: [
+      {
+        q: "What services does your SEO agency provide?",
+        a: "Our SEO agency offers keyword research, on-page SEO, technical SEO, local SEO, content optimization, link building, Google Business Profile optimization, and SEO reporting to help businesses increase online visibility and generate more leads.",
+      },
+      {
+        q: "How much do SEO services in Canada cost?",
+        a: "SEO pricing varies depending on your goals, competition, and website size. Affordable SEO services typically start from a few hundred dollars per month, while comprehensive campaigns may require a larger investment.",
+      },
+      {
+        q: "How long does SEO take to show results?",
+        a: "Most businesses start seeing noticeable SEO improvements within 3 to 6 months. Competitive industries may require longer to achieve significant rankings and traffic growth.",
+      },
+      {
+        q: "Can SEO help my business generate more leads?",
+        a: "Yes. Effective SEO improves your website's visibility in search engines, attracts qualified traffic, and increases opportunities for lead generation and sales.",
+      },
+      {
+        q: "What industries do your SEO services support?",
+        a: "We work with businesses across various industries, including healthcare, legal, home services, eCommerce, professional services, and local businesses throughout Canada.",
+      },
+      {
+        q: "Why is local SEO important for businesses?",
+        a: "Local SEO helps businesses appear in local search results, Google Maps, and location-based searches, making it easier for nearby customers to find and contact them.",
+      },
+      {
+        q: "Is SEO better than paid advertising?",
+        a: "SEO and paid advertising serve different purposes. SEO provides long-term organic growth, while paid ads offer immediate visibility. Many businesses benefit from using both strategies together.",
+      },
+      {
+        q: "How do I get started with your SEO services?",
+        a: "Simply contact our team for a consultation. We'll assess your website, discuss your goals, and recommend the best SEO strategy for your business.",
+      },
+      {
+        q: "Is SEO worth it for small businesses in Canada?",
+        a: "Absolutely. SEO helps small businesses compete with larger competitors by attracting targeted organic traffic and local customers.",
+      },
+    ],
   },
 
   // ══════════════════════════════════════════════════════════════════════════
@@ -1129,6 +1192,160 @@ export const services: ServiceData[] = [
         { id: "webflow", label: "Webflow Logic" },
       ],
     },
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 9. DIGITAL MARKETING AGENCY
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: 9,
+    slug: "digital-marketing-agency-ontario",
+    title: "Digital Marketing Agency",
+    seoMeta: {
+      title:       "Digital Marketing Agency Ontario for Growing Businesses | Proxen",
+      description: "Helping businesses across Ontario reach the right audience, generate qualified leads, and achieve sustainable growth through strategic digital marketing.",
+    },
+    listing: {
+      layoutSide: "left",
+      image: "https://images.prismic.io/proxen/aeigmsBOoF08xM_d_SEO.png?auto=format,compress",
+      shortDescription:
+        "Strategic digital marketing solutions that increase online visibility, generate qualified leads, and drive sustainable business growth across Ontario.",
+      bulletPoints: [
+        { bullet_point: "SEO, PPC, social media & content marketing" },
+        { bullet_point: "Customized strategies with measurable results" },
+      ],
+    },
+    carousel: {
+      title: "Digital Marketing Agency",
+      shortDescription:
+        "We combine SEO, paid advertising, content marketing, and AI search optimization to help Ontario businesses increase visibility and maximize ROI.",
+      slides: [
+        { id: 1, href: "/services/digital-marketing-agency-ontario", imageUrl: "https://images.prismic.io/proxen/aeigmsBOoF08xM_d_SEO.png?auto=format,compress", accent: "#e8a020" },
+      ],
+    },
+    hero: {
+      ...heroSection,
+      eyebrow: "Digital Marketing Agency Ontario",
+      headlineParts: [
+        { text: "Digital Marketing\nAgency " },
+        { text: "Ontario\n", accent: true },
+      ],
+      description:
+        "Looking for a trusted digital marketing agency in Ontario? Proxen helps businesses increase online visibility, generate qualified leads, and drive sustainable growth through strategic SEO, PPC advertising, social media marketing, content marketing, and website optimization. Our customized digital marketing solutions are designed to help businesses across Ontario achieve measurable results.",
+      primaryCta:   { label: "Get a Free Marketing Consultation", href: "/contact-us" },
+      secondaryCta: { label: "View Our Work",                     href: "/work" },
+      trustAvatars: SHARED_AVATARS,
+      trustText:    "Trusted by 50+ businesses across Ontario  ·  Measurable results-driven approach",
+      mockupSlides: [
+        {
+          src: "https://images.prismic.io/proxen/ahgLVLK9tuLqENpR_SEO.jpg?auto=format,compress",
+          alt: "Digital marketing analytics dashboard showing campaign performance",
+        },
+        {
+          src: "https://images.prismic.io/proxen/ahgLVbK9tuLqENpS_SEO-1.jpg?auto=format,compress",
+          alt: "SEO and paid advertising results for Ontario businesses",
+        },
+        {
+          src: "https://images.prismic.io/proxen/ahgLULK9tuLqENpO_SEO-2.jpg?auto=format,compress",
+          alt: "Content marketing and social media strategy results",
+        },
+        {
+          src: "https://images.prismic.io/proxen/ahgLU7K9tuLqENpQ_SEO-4.jpg?auto=format,compress",
+          alt: "Digital marketing growth and lead generation reporting",
+        },
+      ],
+    },
+    industriesSection: {
+      eyebrow:     "INDUSTRIES WE SERVE",
+      heading:     "Marketing Strategies Built For Your Industry",
+      description: "Every industry has its own audience, competition, and growth challenges. That's why we don't believe in one-size-fits-all marketing. Our team develops customized digital marketing strategies tailored to your business goals, target customers, and market landscape. Whether you're a healthcare provider, law firm, contractor, real estate agency, or local business, we create data-driven campaigns that increase visibility, attract qualified leads, and deliver measurable results.",
+      industries: [
+        { label: "Healthcare Providers",    bg: "#dbeafe", color: "#111827" },
+        { label: "Law Firms",               bg: "#fef3c7", color: "#111827" },
+        { label: "Contractors & Trades",    bg: "#dcfce7", color: "#111827" },
+        { label: "Real Estate Agencies",    bg: "#e5e7eb", color: "#111827" },
+        { label: "Local Businesses",        bg: "#ffedd5", color: "#111827" },
+        { label: "eCommerce Brands",        bg: "#ede9fe", color: "#111827" },
+        { label: "Dental Practices",        bg: "#fce7f3", color: "#111827" },
+        { label: "Restaurants",             bg: "#ffedd5", color: "#111827" },
+        { label: "Professional Services",   bg: "#dbeafe", color: "#111827" },
+        { label: "Home Service Businesses", bg: "#dcfce7", color: "#111827" },
+      ],
+    },
+    whyChoose: {
+      eyebrow:       "Our Digital Marketing Services in Ontario",
+      headingPlain:  "Helping Ontario Businesses Attract",
+      headingAccent: "More Customers",
+      headingTrail:  "& Grow Online",
+      description:
+        "Helping Ontario businesses attract more customers, generate qualified leads, and achieve sustainable growth through strategic digital marketing solutions tailored to their goals.",
+      features: [
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeFbK9tuLqEGKp_On-PageSEO.svg",              title: "Search Engine Optimization (SEO)",  desc: "Increase your website's visibility in search engines and attract customers actively searching for your products or services. Our SEO strategies include keyword research, on-page optimization, technical SEO, content improvements, and authority building to help your business achieve sustainable organic growth." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeFLK9tuLqEGKo_LocalSEO.svg",               title: "Local SEO",                          desc: "Help local customers find your business when they search online. We optimize your Google Business Profile, local citations, location pages, and local search signals to improve visibility in Google Maps and local search results, driving more calls, visits, and inquiries." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeDLK9tuLqEGKg_GoogleAdsCampaigns.svg",     title: "Google Ads & PPC Management",       desc: "Generate immediate traffic and qualified leads with highly targeted pay-per-click advertising campaigns. From keyword targeting and ad creation to conversion tracking and campaign optimization, we maximize your advertising budget and improve return on investment." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeErK9tuLqEGKm_SocialMediaStrategy.svg",   title: "Social Media Marketing",            desc: "Build a stronger online presence and connect with your audience across platforms like Facebook, Instagram, LinkedIn, and more. Our social media strategies focus on increasing engagement, growing brand awareness, and generating meaningful business opportunities." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeE7K9tuLqEGKn_ContentOptimization.svg",   title: "Content Marketing",                 desc: "Create valuable, relevant content that attracts, educates, and converts potential customers. From website content and blog articles to landing pages and resource guides, we develop content that supports SEO performance, builds trust, and drives customer action." },
+        { iconId: "https://proxen.cdn.prismic.io/proxen/ahGeF7K9tuLqEGKr_TechnicalSEO.svg",          title: "AEO & GEO Optimization",            desc: "Prepare your business for the future of search with Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO). We optimize your content to improve visibility in AI-powered search experiences, voice search, featured snippets, and platforms such as ChatGPT, Gemini, and other generative search tools." },
+      ],
+    },
+    technologies: {
+      eyebrow:       "DIGITAL MARKETING CHANNELS",
+      headingPlain:  "Marketing Strategies That Drive",
+      headingAccent: "Real Business",
+      headingTrail:  "Growth",
+      description:
+        "Success comes from reaching the right audience through the right channels. We combine SEO, paid advertising, content marketing, social media, and AI search optimization to help businesses increase visibility, generate qualified leads, and maximize ROI.",
+      platforms: [
+        { id: "google",     label: "Google Search" },
+        { id: "google-ads", label: "Google Ads"    },
+        { id: "facebook",   label: "Facebook"      },
+        { id: "instagram",  label: "Instagram"     },
+        { id: "linkedin",   label: "LinkedIn"      },
+        { id: "ai-search",  label: "AI Search"     },
+      ],
+    },
+    faq: [
+      {
+        q: "Which areas does your digital marketing agency serve?",
+        a: "Our digital marketing agency serves businesses across Ontario, including Toronto, Mississauga, Brampton, Hamilton, Cambridge, Burlington, Kitchener, Waterloo, and surrounding communities. We work with local businesses, healthcare providers, eCommerce brands, and professional service companies looking to grow their online presence.",
+      },
+      {
+        q: "How much does digital marketing cost in Canada?",
+        a: "Digital marketing costs vary based on your business goals, industry, competition, and required services. We offer customized strategies designed to deliver the best possible return on investment for your budget.",
+      },
+      {
+        q: "How long does it take to see results from digital marketing?",
+        a: "The timeline depends on the services used. Paid advertising can generate results quickly, while SEO and content marketing typically take several months to build momentum and deliver sustainable growth.",
+      },
+      {
+        q: "Is digital marketing worth it for small businesses?",
+        a: "Yes. Digital marketing helps small businesses compete effectively by increasing online visibility, attracting qualified leads, and generating measurable business growth without the costs of traditional advertising.",
+      },
+      {
+        q: "What digital marketing services does my business need?",
+        a: "The right strategy depends on your goals. Most businesses benefit from a combination of SEO, Local SEO, Google Ads, content marketing, and social media marketing to maximize visibility and lead generation.",
+      },
+      {
+        q: "How many leads can digital marketing generate for my business?",
+        a: "Lead generation varies by industry, competition, and budget. Our focus is on attracting qualified prospects who are more likely to convert into paying customers.",
+      },
+      {
+        q: "What is the difference between SEO and Google Ads?",
+        a: "SEO improves your organic visibility in search results over time, while Google Ads provides immediate visibility through paid placements. Many businesses achieve the best results by combining both strategies.",
+      },
+      {
+        q: "Can you help my business rank higher on Google?",
+        a: "Yes. We use proven SEO strategies, content optimization, technical improvements, and authority-building techniques to improve search rankings and online visibility.",
+      },
+      {
+        q: "Do you work with healthcare clinics and dental practices?",
+        a: "Yes. We provide specialized digital marketing solutions for healthcare providers, dental clinics, and other professional service businesses in Mississauga, looking to attract more patients and grow their online presence.",
+      },
+      {
+        q: "Do you offer digital marketing services for eCommerce businesses?",
+        a: "Yes. We help eCommerce brands increase traffic, improve conversion rates, and grow online sales through SEO, paid advertising, content marketing, and conversion optimization.",
+      },
+    ],
   },
 
 ];

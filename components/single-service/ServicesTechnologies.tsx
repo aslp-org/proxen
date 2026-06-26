@@ -95,6 +95,70 @@ const VueLogo: React.FC = () => (
   </svg>
 );
 
+// ── Digital marketing channel logos ───────────────────────────────────────────
+
+const GoogleSearchLogo: React.FC = () => (
+  <svg viewBox="0 0 180 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Google Search" role="img">
+    <circle cx="17" cy="19" r="13" fill="none" stroke="#EA4335" strokeWidth="2" />
+    <circle cx="17" cy="19" r="8" fill="none" stroke="#4285F4" strokeWidth="2" />
+    <circle cx="17" cy="19" r="4" fill="#34A853" />
+    <line x1="27" y1="29" x2="35" y2="37" stroke="#FBBC05" strokeWidth="2.5" strokeLinecap="round" />
+    <text x="42" y="26" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontSize="15" fontWeight="700" fill="#111827">Google Search</text>
+  </svg>
+);
+
+const GoogleAdsLogo: React.FC = () => (
+  <svg viewBox="0 0 154 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Google Ads" role="img">
+    <path d="M3 32L14 14l11 18H3z" fill="#FBBC05" />
+    <path d="M14 14L25 32h11L25 14l-11-0z" fill="#4285F4" />
+    <circle cx="36" cy="30" r="5" fill="#34A853" />
+    <text x="46" y="26" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontSize="16" fontWeight="700" fill="#111827">Google Ads</text>
+  </svg>
+);
+
+const FacebookLogo: React.FC = () => (
+  <svg viewBox="0 0 128 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Facebook" role="img">
+    <rect x="2" y="2" width="32" height="32" rx="7" fill="#1877F2" />
+    <path d="M22 19h-3v11h-4V19h-2v-4h2v-2c0-3 1.5-5 5-5h3v4h-2c-1 0-1 .5-1 1v2h3l-.5 4z" fill="#fff" />
+    <text x="40" y="26" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontSize="17" fontWeight="700" fill="#111827">Facebook</text>
+  </svg>
+);
+
+const InstagramLogo: React.FC = () => (
+  <svg viewBox="0 0 138 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Instagram" role="img">
+    <defs>
+      <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#F58529" />
+        <stop offset="50%" stopColor="#DD2A7B" />
+        <stop offset="100%" stopColor="#8134AF" />
+      </linearGradient>
+    </defs>
+    <rect x="2" y="2" width="32" height="32" rx="8" fill="url(#ig-grad)" />
+    <circle cx="18" cy="18" r="7" stroke="#fff" strokeWidth="2" fill="none" />
+    <circle cx="26" cy="10" r="2" fill="#fff" />
+    <text x="40" y="26" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontSize="16" fontWeight="700" fill="#111827">Instagram</text>
+  </svg>
+);
+
+const LinkedInLogo: React.FC = () => (
+  <svg viewBox="0 0 128 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="LinkedIn" role="img">
+    <rect x="2" y="2" width="32" height="32" rx="5" fill="#0A66C2" />
+    <circle cx="10" cy="12" r="2.5" fill="#fff" />
+    <rect x="8" y="17" width="4" height="13" fill="#fff" />
+    <path d="M16 17h4v2s1-2 4-2c3.5 0 5 2 5 5v8h-4v-7c0-1.5-.5-2.5-2-2.5S21 22 21 23.5V30h-4V17z" fill="#fff" />
+    <text x="40" y="26" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontSize="17" fontWeight="700" fill="#111827">LinkedIn</text>
+  </svg>
+);
+
+const AISearchLogo: React.FC = () => (
+  <svg viewBox="0 0 128 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AI Search" role="img">
+    <circle cx="19" cy="19" r="14" fill="none" stroke="#6366F1" strokeWidth="2" strokeDasharray="3 2" />
+    <path d="M14 19l3 3 6-6" stroke="#6366F1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M19 5 Q26 12 19 19 Q12 12 19 5Z" fill="#6366F1" fillOpacity="0.2" />
+    <text x="40" y="26" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontSize="16" fontWeight="700" fill="#111827">AI Search</text>
+  </svg>
+);
+
 // ─────────────────────────────────────────────────────────────────────────────
 //  Logo map — bridges PlatformId strings (from services-data.ts) to
 //  inline SVG components (which cannot live in a plain .ts file).
@@ -102,15 +166,22 @@ const VueLogo: React.FC = () => (
 //  the PlatformId union type + entry in services-data.ts > technologiesSection.
 // ─────────────────────────────────────────────────────────────────────────────
 const LOGO_MAP: Record<PlatformId, React.ReactNode> = {
-  shopify:     <ShopifyLogo />,
-  wordpress:   <WordPressLogo />,
-  wix:         <WixLogo />,
-  webflow:     <WebflowLogo />,
-  nextjs:      <NextJsLogo />,
-  squarespace: <SquarespaceLogo />,
-  weebly:      <WeeblyLogo />,
-  react:       <ReactLogo />,
-  vue:         <VueLogo />,
+  shopify:      <ShopifyLogo />,
+  wordpress:    <WordPressLogo />,
+  wix:          <WixLogo />,
+  webflow:      <WebflowLogo />,
+  nextjs:       <NextJsLogo />,
+  squarespace:  <SquarespaceLogo />,
+  weebly:       <WeeblyLogo />,
+  react:        <ReactLogo />,
+  vue:          <VueLogo />,
+  // ── Digital marketing channels ───────────────────────────────────────────
+  "google":     <GoogleSearchLogo />,
+  "google-ads": <GoogleAdsLogo />,
+  facebook:     <FacebookLogo />,
+  instagram:    <InstagramLogo />,
+  linkedin:     <LinkedInLogo />,
+  "ai-search":  <AISearchLogo />,
 };
 
 // ─────────────────────────────────────────────────────────────────────────────

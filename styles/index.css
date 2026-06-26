@@ -1856,7 +1856,7 @@
 .spp-hero-section .spp-hero-media-wrap {
   position: relative;
   width: 100%;
-  max-width: 460px;
+  /* max-width: 460px; */
   border-radius: var(--spp-radius-xl);
   overflow: hidden;
   box-shadow: var(--spp-shadow-media);
